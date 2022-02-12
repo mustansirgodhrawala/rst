@@ -1,3 +1,15 @@
 #!/bin/bash
-rm /usr/bin/rst
-cp rst /usr/bin/rst 
+file_local=0
+file="rst"
+if [ -f "$file" ]; then
+	chmod +x rst
+	echo "RST file found locally moving to /usr/bin"
+  	file_local=1
+  	rm /usr/bin/rst
+  	cp rst /usr/bin/rst
+else
+	wget https://raw.githubusercontent.com/mustansirgodhrawala/rst/master/rst?token=GHSAT0AAAAAABQO6HOHF3FRX2HHMWROWNQAYQIIHZA
+	mv /usr/bin/rst
+	echo "Downloaded file... now moving to /usr/bin"
+fi
+

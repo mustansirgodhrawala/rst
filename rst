@@ -90,8 +90,11 @@ elif [ "$1" = "help" ]; then
 	echo -e "${yellow}Option 1:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n5. Perl\n6. Ruby\n"
 	echo -e "${yellow}Option 2:\n1. Netcat(Default)\n2. Pwncat-cs\n"
 	echo -e 'Usage: rs <language> <listener>'
-	echo -e 'Example: rs 1 2\n\t For a python payload and pwncat-cs listener.'
+	echo -e 'Example: rs python 2\n\t For a python payload and pwncat-cs listener.'
 	echo -e 'Example: rs 3 2\n\t For a php payload and pwncat-cs listener.'
+	echo -e 'Example: rs php 2\n\t For a php payload and pwncat-cs listener.'
+	echo -e 'Example: rs ruby 2\n\t For a ruby payload and pwncat-cs listener.'
+
 fi
 
 #Making sure pwncat-cs exists on system
