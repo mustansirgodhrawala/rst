@@ -16,7 +16,9 @@ We'll create the payload and put it in your clipboard, and start the listener on
 ## Usage
 
 ```bash
-rst help
+1. rst python
+2. rst ruby
+3. rst nc 2 [2 For pwncat listener]
 ```
 
 ### Requirements 

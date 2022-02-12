@@ -1,1 +1,3 @@
 #!/bin/bash
+rm /usr/bin/rst
+cp rst /usr/bin/rst 

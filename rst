@@ -101,8 +101,13 @@ if [ "$2" = 2 ] && [ $pwncat = 0 ]; then
 	set "$2" 1
 fi
 
+re='^[0-9]+$'
+if ! [[ $1 =~ $re ]] ; then
+	lowerstr="$(echo $1 | tr '[:upper:]' '[:lower:]')"
+fi
+
 ##Python Caller
-if [ "$1" = 1 ]; then
+if [ "$1" = 1 ] || [ "$lowerstr" = "python" ] ; then
 	if [ "$2" = 1 ] || [ "$2" = "" ]; then
 		payloadmaker Python Netcat
 	elif [ "$2" = 2 ]; then
@@ -110,7 +115,7 @@ if [ "$1" = 1 ]; then
 	fi
 
 ##Bash Caller
-elif [ "$1" = 2 ]; then
+elif [ "$1" = 2 ] || [ "$lowerstr" = "bash" ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ]; then
 		payloadmaker Bash Netcat
 	elif [ "$2" = 2 ]; then
@@ -118,7 +123,7 @@ elif [ "$1" = 2 ]; then
 	fi
 
 ##PHP Caller
-elif [ "$1" = 3 ]; then
+elif [ "$1" = 3 ] || [ "$lowerstr" = "php" ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ]; then
 		payloadmaker PHP Netcat
 	elif [ "$2" = 2 ]; then
@@ -126,7 +131,7 @@ elif [ "$1" = 3 ]; then
 	fi
 
 ##Netcat Caller
-elif [ "$1" = 4 ]; then
+elif [ "$1" = 4 ] || [ "$lowerstr" = "netcat" ] || [ "$lowerstr" = "nc" ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ]; then
 		payloadmaker Netcat Netcat
 	elif [ "$2" = 2 ]; then
@@ -134,7 +139,7 @@ elif [ "$1" = 4 ]; then
 	fi
 
 ##Perl Caller
-elif [ "$1" = 5 ]; then
+elif [ "$1" = 5 ] || [ "$lowerstr" = "perl" ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ]; then
 		payloadmaker Perl Netcat
 	elif [ "$2" = 2 ]; then
@@ -142,7 +147,7 @@ elif [ "$1" = 5 ]; then
 	fi
 
 ##Ruby Caller
-elif [ "$1" = 6 ]; then
+elif [ "$1" = 6 ] || [ "$lowerstr" = "rb" ] || [ "$lowerstr" = "ruby" ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ]; then
 		payloadmaker Ruby Netcat
 	elif [ "$2" = 2 ]; then
