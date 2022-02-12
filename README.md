@@ -8,11 +8,17 @@ Heck we're even giving you options for listeners, you can use netcat or pwncat b
 
 We'll create the payload and put it in your clipboard, and start the listener on our own too. All so you can spend your time pentesting rather than having to type quad 4 or 1234 again and again. 
 
-## Installation 
+## Installation Guide
 
+In depth guide, click on the setup script and view it raw. Copy paste the link and run the following command
 ```bash
-./setup.sh
+wget <copy_paste_link_here>
 ```
+
+OR
+
+Clone the repo and run the ./setup script
+
 ## Usage
 
 ```bash
@@ -21,7 +27,7 @@ We'll create the payload and put it in your clipboard, and start the listener on
 3. rst nc 2 [2 For pwncat listener]
 ```
 
-### Requirements 
+## Requirements 
 1. This is a barebones bash script that needs netcat on your system and pwncat if you plan on using it.
 
 ## To-Do
