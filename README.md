@@ -20,7 +20,7 @@ rst help
 ```
 
 ### Requirements 
-1. This is a barebones bash script that needs netcat on your system and pwncat if you plan on using it. We don't have checks for pwncat installation yet so please make sure it's there. 
+1. This is a barebones bash script that needs netcat on your system and pwncat if you plan on using it.
 
 ## To-Do
 1. Manage colour schemes. 
