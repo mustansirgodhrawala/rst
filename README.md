@@ -63,4 +63,3 @@ All done, the 'rst' script is ready to use.
 2. Add socat as a listener. 
 3. Try to auto-stabilize netcat and socat reverse shells. 
 4. Give php full rev shells options. 
-5. Create setup.py script to handle installation.
