@@ -54,12 +54,3 @@ All done, the 'rst' script is ready to use.
 2. rst ruby
 3. rst nc 2 [2 For pwncat listener]
 ```
-
-## Requirements 
-1. This is a barebones bash script that needs netcat on your system and pwncat if you plan on using it.
-
-## To-Do
-1. Manage colour schemes. 
-2. Add socat as a listener. 
-3. Try to auto-stabilize netcat and socat reverse shells. 
-4. Give php full rev shells options. 
