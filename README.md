@@ -24,8 +24,7 @@ rst help
 
 ## To-Do
 1. Manage colour schemes. 
-2. Setup pwncat checks. 
-3. Add more language for reverse shell payloads. 
-4. Add socat as a listener. 
-5. Try to auto-stabilize netcat and socat reverse shells. 
-6. Give php full rev shells options. 
+2. Add more language for reverse shell payloads. 
+3. Add socat as a listener. 
+4. Try to auto-stabilize netcat and socat reverse shells. 
+5. Give php full rev shells options. 
