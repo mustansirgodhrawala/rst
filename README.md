@@ -1,4 +1,4 @@
-# rst
+# RST | Reverse Shell Tool 
 
 ## Description 
 
@@ -8,18 +8,18 @@ Heck we're even giving you options for listeners, you can use netcat or pwncat b
 
 We'll create the payload and put it in your clipboard, and start the listener on our own too. All so you can spend your time pentesting rather than having to type quad 4 or 1234 again and again. 
 
-### Installation 
+## Installation 
 
 ```bash
 ./setup.sh
 ```
-### Usage
+## Usage
 
 ```bash
 rst help
 ```
 
-## Requirements 
+### Requirements 
 1. This is a barebones bash script that needs netcat on your system and pwncat if you plan on using it. We don't have checks for pwncat installation yet so please make sure it's there. 
 
 ## To-Do
