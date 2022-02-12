@@ -29,8 +29,24 @@ setup
 
 OR
 
-Clone the repo and run the ./setup script
+1. Clone the repo.
+```bash
+git clone https://github.com/mustansirgodhrawala/rst.git
+```
+2. Change the directory.
+```bash
+cd rst 
+```
+3.  Give setup execution permissions.
+```bash
+chmod +x setup
+```
+4. Run the setup shell script. 
+```bash
+./setup
+```
 
+All done, the 'rst' script is ready to use. 
 ## Usage
 
 ```bash
