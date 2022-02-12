@@ -24,8 +24,7 @@ rst help
 
 ## To-Do
 1. Manage colour schemes. 
-2. Add more language for reverse shell payloads. 
-3. Add socat as a listener. 
-4. Try to auto-stabilize netcat and socat reverse shells. 
-5. Give php full rev shells options. 
-6. Create setup.py script to handle installation.
+2. Add socat as a listener. 
+3. Try to auto-stabilize netcat and socat reverse shells. 
+4. Give php full rev shells options. 
+5. Create setup.py script to handle installation.
