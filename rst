@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#From pmp
+function call_cmd(){
+	xte "str $1"
+	sleep 0.5
+	xte "key Return"
+}
+
 #Color Codes for Output
 red='\033[0;31m'
 green='\033[1;32m'
@@ -67,10 +74,10 @@ function listener(){
 		clear
 		echo -e "${green}Pwncat Listener Started."
 		echo -e "${yellow}pwncat-cs -lp $PORT"
-		pwncat=`cd /opt/pwncat;source pwncat-env/bin/activate;pwncat-cs -lp $PORT`
+		call_cmd "source /opt/pwncat/pwncat-env/bin/activate;pwncat-cs -lp $PORT"
 		echo $pwncat	
 	elif [ $1 == "Netcat" ]; then
-		netcat=`nc -lvnp $PORT` 
+		call_cmd "nc -lvnp $PORT" 
 		echo $netcat
 	fi
 }
