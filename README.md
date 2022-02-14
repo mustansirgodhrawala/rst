@@ -55,4 +55,6 @@ All done, the 'rst' script is ready to use.
 1. rst python
 2. rst ruby
 3. rst nc 2 [2 For pwncat listener]
+4. rst python pwncat
+5. rst ruby nc
 ```

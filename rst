@@ -130,7 +130,7 @@ if [ "$1" = 1 ] || [ "$langlower" = "python" ] ; then
 elif [ "$1" = 2 ] || [ "$langlower" = "bash" ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker Bash Netcat
-	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ] || [ "$listenlower" = "pwn" ]; then
 		payloadmaker Bash pwncat-cs
 	fi
 
@@ -138,7 +138,7 @@ elif [ "$1" = 2 ] || [ "$langlower" = "bash" ]; then
 elif [ "$1" = 3 ] || [ "$langlower" = "php" ] ; then
 	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker PHP Netcat
-	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ] || [ "$listenlower" = "pwn" ]; then
 		payloadmaker PHP pwncat-cs
 	fi
 
@@ -146,7 +146,7 @@ elif [ "$1" = 3 ] || [ "$langlower" = "php" ] ; then
 elif [ "$1" = 4 ] || [ "$langlower" = "netcat" ] || [ "$langlower" = "nc" ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker Netcat Netcat
-	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ] || [ "$listenlower" = "pwn" ]; then
 		payloadmaker Netcat pwncat-cs
 	fi
 
@@ -154,7 +154,7 @@ elif [ "$1" = 4 ] || [ "$langlower" = "netcat" ] || [ "$langlower" = "nc" ]; the
 elif [ "$1" = 5 ] || [ "$langlower" = "perl" ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker Perl Netcat
-	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ] || [ "$listenlower" = "pwn" ]; then
 		payloadmaker Perl pwncat-cs
 	fi
 
@@ -162,7 +162,7 @@ elif [ "$1" = 5 ] || [ "$langlower" = "perl" ]; then
 elif [ "$1" = 6 ] || [ "$langlower" = "rb" ] || [ "$langlower" = "ruby" ]; then
 	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker Ruby Netcat
-	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ] || [ "$listenlower" = "pwn" ]; then
 		payloadmaker Ruby pwncat-cs
 	fi
 fi
