@@ -111,54 +111,58 @@ fi
 
 re='^[0-9]+$'
 if ! [[ $1 =~ $re ]] ; then
-	lowerstr="$(echo $1 | tr '[:upper:]' '[:lower:]')"
+	langlower="$(echo $1 | tr '[:upper:]' '[:lower:]')"
+fi
+
+if ! [[ $2 =~ $re ]] ; then
+	listenlower="$(echo $2 | tr '[:upper:]' '[:lower:]')"
 fi
 
 ##Python Caller
-if [ "$1" = 1 ] || [ "$lowerstr" = "python" ] ; then
-	if [ "$2" = 1 ] || [ "$2" = "" ]; then
+if [ "$1" = 1 ] || [ "$langlower" = "python" ] ; then
+	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker Python Netcat
 	elif [ "$2" = 2 ]; then
 		payloadmaker Python pwncat-cs
 	fi
 
 ##Bash Caller
-elif [ "$1" = 2 ] || [ "$lowerstr" = "bash" ]; then
-	if [ "$2" = 1 ] || [ "$2" = "" ]; then
+elif [ "$1" = 2 ] || [ "$langlower" = "bash" ]; then
+	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker Bash Netcat
-	elif [ "$2" = 2 ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ]; then
 		payloadmaker Bash pwncat-cs
 	fi
 
 ##PHP Caller
-elif [ "$1" = 3 ] || [ "$lowerstr" = "php" ]; then
-	if [ "$2" = 1 ] || [ "$2" = "" ]; then
+elif [ "$1" = 3 ] || [ "$langlower" = "php" ] ; then
+	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker PHP Netcat
-	elif [ "$2" = 2 ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ]; then
 		payloadmaker PHP pwncat-cs
 	fi
 
 ##Netcat Caller
-elif [ "$1" = 4 ] || [ "$lowerstr" = "netcat" ] || [ "$lowerstr" = "nc" ]; then
-	if [ "$2" = 1 ] || [ "$2" = "" ]; then
+elif [ "$1" = 4 ] || [ "$langlower" = "netcat" ] || [ "$langlower" = "nc" ]; then
+	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker Netcat Netcat
-	elif [ "$2" = 2 ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ]; then
 		payloadmaker Netcat pwncat-cs
 	fi
 
 ##Perl Caller
-elif [ "$1" = 5 ] || [ "$lowerstr" = "perl" ]; then
-	if [ "$2" = 1 ] || [ "$2" = "" ]; then
+elif [ "$1" = 5 ] || [ "$langlower" = "perl" ]; then
+	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker Perl Netcat
-	elif [ "$2" = 2 ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ]; then
 		payloadmaker Perl pwncat-cs
 	fi
 
 ##Ruby Caller
-elif [ "$1" = 6 ] || [ "$lowerstr" = "rb" ] || [ "$lowerstr" = "ruby" ]; then
-	if [ "$2" = 1 ] || [ "$2" = "" ]; then
+elif [ "$1" = 6 ] || [ "$langlower" = "rb" ] || [ "$langlower" = "ruby" ]; then
+	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker Ruby Netcat
-	elif [ "$2" = 2 ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ]; then
 		payloadmaker Ruby pwncat-cs
 	fi
 fi
