@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#From pmp
+#Put into terminal using xautomation 
 function call_cmd(){
 	xte "str $1"
 	sleep 0.5
