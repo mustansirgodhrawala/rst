@@ -73,12 +73,11 @@ function listener(){
 	if [ $1 == "pwncat-cs" ]; then
 		clear
 		echo -e "${green}Pwncat Listener Started."
-		echo -e "${yellow}pwncat-cs -lp $PORT"
+		echo -e "${white}pwncat-cs -lp $PORT"
 		call_cmd "source /opt/pwncat/pwncat-env/bin/activate;pwncat-cs -lp $PORT"
-		echo $pwncat	
 	elif [ $1 == "Netcat" ]; then
+		echo -e "${green}Netcat Listener Started."
 		call_cmd "nc -lvnp $PORT" 
-		echo $netcat
 	fi
 }
 
@@ -87,13 +86,13 @@ echo -e "${green}Reverse Shell Everything by Mustansir Godhrawala "
 
 ##Usage Error Message
 if [ "$1" == "" ]; then
-	echo -e "${red}Please enter parameters <Language> <Listener>\nUsage: rs ${yellow}help\n${red}To see the help menu"
+	echo -e "${red}Please enter parameters <Language> <Listener>\nUsage: rs help\nTo see the help menu"
 	exit 1
 
 ##Help Menu 
 elif [ "$1" = "help" ]; then 	
-	echo -e "${yellow}Option 1:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n5. Perl\n6. Ruby\n"
-	echo -e "${yellow}Option 2:\n1. Netcat(Default)\n2. Pwncat-cs\n"
+	echo -e "${white}Option 1:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n5. Perl\n6. Ruby\n"
+	echo -e "Option 2:\n1. Netcat(Default)\n2. Pwncat-cs\n"
 	echo -e 'Usage: rs <language> <listener>'
 	echo -e 'Example: rs python 2\n\t For a python payload and pwncat-cs listener.'
 	echo -e 'Example: rs 3 2\n\t For a php payload and pwncat-cs listener.'
