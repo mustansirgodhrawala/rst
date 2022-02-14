@@ -91,14 +91,12 @@ if [ "$1" == "" ]; then
 
 ##Help Menu 
 elif [ "$1" = "help" ]; then 	
-	echo -e "${white}Option 1:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n5. Perl\n6. Ruby\n"
-	echo -e "Option 2:\n1. Netcat(Default)\n2. Pwncat-cs\n"
-	echo -e 'Usage: rs <language> <listener>'
-	echo -e 'Example: rs python 2\n\t For a python payload and pwncat-cs listener.'
-	echo -e 'Example: rs 3 2\n\t For a php payload and pwncat-cs listener.'
-	echo -e 'Example: rs php 2\n\t For a php payload and pwncat-cs listener.'
-	echo -e 'Example: rs ruby 2\n\t For a ruby payload and pwncat-cs listener.'
-
+	echo -e "${white}Usage: rst <language> <listener>"
+	echo -e "Language Options:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n5. Perl\n6. Ruby"
+	echo -e "Listener Options:\n1. Netcat(Default)\n2. Pwncat-CS"
+	echo -e "Usage Examples:\n1. rs rb netcat\n   For a ruby payload with a netcat listener."
+	echo -e "\n2. rs python pwncat\n   For a python payload with a pwncat-cs listener."
+	exit 1
 fi
 
 #Making sure pwncat-cs exists on system
