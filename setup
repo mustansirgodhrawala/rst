@@ -7,6 +7,12 @@ if ! [ -x "$(command -v xte)" ]; then
   exit 1
 fi
 
+if ! [ -x "$(command -v xclip)" ]; then
+  echo 'Xautomation is not installed and is required, installing xautomation.'
+  apt-get install xlip
+  exit 1
+fi
+
 #Local File Assumption
 file_local=0
 file="rst"
@@ -25,7 +31,7 @@ else
 	if [ -f "/usr/bin/rst" ]; then
 		rm /usr/bin/rst
 	fi
-	wget https://raw.githubusercontent.com/mustansirgodhrawala/rst/master/rst?token=GHSAT0AAAAAABQO6HOHF3FRX2HHMWROWNQAYQIIHZA
+	wget https://raw.githubusercontent.com/mustansirgodhrawala/rst/master/setup
 	mv rst /usr/bin/rst
 	chmod +x /usr/bin/rst
 	echo "Downloaded file... now moving to /usr/bin"
