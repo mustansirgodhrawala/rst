@@ -13,7 +13,7 @@ We'll create the payload and put it in your clipboard, and start the listener on
 ## Installation Guide
 
 In depth guide:
-1. View the script in the browser and click on it. 
+1. View the setup script in the browser and click on it. 
 2. Click on the view raw file, and copy the link from the browser search bar. 
 3. Wget the setup script. Using the below command. 
 ```bash
@@ -26,7 +26,7 @@ chmod +x setup
 
 5. Execute the command using the below command
 ```bash 
-setup
+./setup
 ```
 
 OR
