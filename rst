@@ -120,7 +120,7 @@ fi
 if [ "$1" = 1 ] || [ "$langlower" = "python" ] ; then
 	if [ "$2" = 1 ] || [ "$2" = "" ] || [ "$listenlower" = "nc" ] || [ "$listenlower" = "netcat" ]; then
 		payloadmaker Python Netcat
-	elif [ "$2" = 2 ]; then
+	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ] || [ "$listenlower" = "pwn" ]; then
 		payloadmaker Python pwncat-cs
 	fi
 
