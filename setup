@@ -9,7 +9,7 @@ fi
 
 if ! [ -x "$(command -v xclip)" ]; then
   echo 'Xautomation is not installed and is required, installing xautomation.'
-  apt-get install xlip
+  apt-get install xclip
   exit 1
 fi
 
