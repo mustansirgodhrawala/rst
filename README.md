@@ -17,7 +17,7 @@ In depth guide:
 2. Click on the view raw file, and copy the link from the browser search bar. 
 3. Wget the setup script. Using the below command. 
 ```bash
-wget <copy_paste_link_here>
+wget https://raw.githubusercontent.com/mustansirgodhrawala/rst/master/setup
 ```
 4.Run the following command
 ```bash
