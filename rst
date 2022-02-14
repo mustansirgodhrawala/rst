@@ -83,7 +83,7 @@ function listener(){
 }
 
 ##Welcome Message
-echo -e "${white}Reverse Shell Everything by Mustansir Godhrawala "
+echo -e "${green}Reverse Shell Everything by Mustansir Godhrawala "
 
 ##Usage Error Message
 if [ "$1" == "" ]; then
@@ -110,10 +110,11 @@ if [ "$2" = 2 ] && [ $pwncat = 0 ]; then
 fi
 
 re='^[0-9]+$'
+#Checking if there's a string in place of the language
 if ! [[ $1 =~ $re ]] ; then
 	langlower="$(echo $1 | tr '[:upper:]' '[:lower:]')"
 fi
-
+#Checking if there's a string in place of the listener
 if ! [[ $2 =~ $re ]] ; then
 	listenlower="$(echo $2 | tr '[:upper:]' '[:lower:]')"
 fi
@@ -165,4 +166,7 @@ elif [ "$1" = 6 ] || [ "$langlower" = "rb" ] || [ "$langlower" = "ruby" ]; then
 	elif [ "$2" = 2 ] || [ "$listenlower" = "pwncat" ] || [ "$listenlower" = "pwncat-cs" ] || [ "$listenlower" = "pwn" ]; then
 		payloadmaker Ruby pwncat-cs
 	fi
-fi
+
+else
+	echo -e "${white}What is this garbled language thou must art speak. \"Help yourself\" my fellow breathren"
+fi 
