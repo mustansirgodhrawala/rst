@@ -63,7 +63,7 @@ function payloadmaker(){
 		listener "$2"
 
 	else
-		echo "Invalid payload.\nReport error to RST Error Forum on Github or write to us at rst@gmail.com"
+		echo "Invalid payload.\nReport error to RST Error Forum on Github or write to us at mgodhrawala402@gmail.com"
 		exit 1
 	fi
 }
@@ -86,7 +86,7 @@ echo -e "${green}Reverse Shell Everything by Mustansir Godhrawala "
 
 ##Usage Error Message
 if [ "$1" == "" ]; then
-	echo -e "${red}Please enter parameters <Language> <Listener>\nUsage: rs help\nTo see the help menu"
+	echo -e "${red}Please enter parameters <Language> <Listener>\nUsage: rst help\nTo see the help menu"
 	exit 1
 
 ##Help Menu 
