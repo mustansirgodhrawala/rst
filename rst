@@ -94,8 +94,8 @@ elif [ "$1" = "help" ]; then
 	echo -e "${white}Usage: rst <language> <listener>"
 	echo -e "Language Options:\n1. Python\n2. Bash\n3. PHP\n4. Netcat\n5. Perl\n6. Ruby"
 	echo -e "Listener Options:\n1. Netcat(Default)\n2. Pwncat-CS"
-	echo -e "Usage Examples:\n1. rs rb netcat\n   For a ruby payload with a netcat listener."
-	echo -e "\n2. rs python pwncat\n   For a python payload with a pwncat-cs listener."
+	echo -e "Usage Examples:\n1. rst rb netcat\n   For a ruby payload with a netcat listener."
+	echo -e "\n2. rst python pwncat\n   For a python payload with a pwncat-cs listener."
 	exit 1
 fi
 
