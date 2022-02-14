@@ -52,9 +52,9 @@ All done, the 'rst' script is ready to use.
 ## Usage
 
 ```bash
-1. rst python
-2. rst ruby
+1. rst python [Python payload with default netcat listener]
+2. rst ruby [Ruby Payload with default netcat listener]
 3. rst nc 2 [2 For pwncat listener]
-4. rst python pwncat
-5. rst ruby nc
+4. rst python pwncat [Python payload with pwncat listener]
+5. rst ruby nc [Ruby payload with netcat listener]
 ```
