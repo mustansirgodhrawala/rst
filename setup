@@ -2,7 +2,7 @@
 
 #Checking for installation of xautomation
 if ! [ -x "$(command -v xte)" ]; then
-  echo 'Xautomation is not installed and is required, installing xautomation.'
+  echo 'Xclip is not installed and is required, installing xlip.'
   apt-get install xautomation
   exit 1
 fi
