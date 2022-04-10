@@ -37,3 +37,4 @@ else
 	echo "Downloaded file... now moving to /usr/bin"
 fi
 
+echo "Setup done use rst command to execute"
