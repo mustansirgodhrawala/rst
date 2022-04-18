@@ -1,0 +1,5 @@
+gnureadline==8.0.0
+keyboard==0.13.5
+rich==12.2.0
+setuptools==44.1.1
+simple_term_menu==1.4.1
