@@ -2,6 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/mustansirgodhrawala/rst)
 ![code size](https://img.shields.io/github/languages/code-size/mustansirgodhrawala/rst)
+[![Documentation Status](https://readthedocs.org/projects/reverse-shell-tool/badge/?version=latest)](https://reverse-shell-tool.readthedocs.io/en/latest/?badge=latest)
 
 ## Description 
 
