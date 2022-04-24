@@ -5,8 +5,13 @@ from simple_term_menu import TerminalMenu
 import sys
 import keyboard
 from rst.autocomplete import SimpleCompleter, input_loop
-from rst.lang_handler import lang_handler
-from rst.ngrok_handler import ngrok_tunnel_creator, end_ngrok_connection, validate_tunnel_active
+from rst.lang_handler import lang_handler, provide_rs
+from rst.ngrok_handler import ngrok_tunnel_creator, end_ngrok_connection, validate_tunnel_active,ngrok_stat
+import argparse
+from typing import Sequence, Optional
+from rst.conn_handler import conn_handler
+from rst.listener_handler import activate_listener
+import subprocess
 try:
     import gnureadline as readline
 except ImportError:
@@ -62,6 +67,10 @@ def help_menu(listeners):
 
 	print("The syntax to create listeners is as such: <language> <listener>")
 	print("Or you can enter the listen to get a gui based menu.")
+	if ngrok_stat():
+		print("Use -n when launching to use ngrok in reverse shell, we'll do the ngroking for you.")
+	else:
+		print("#### Support for ngrok is disabled since it is not installed locally.")
 
 def listener_menu(listeners):
 	options_lang = [i for i in languages]
@@ -76,15 +85,31 @@ def listener_menu(listeners):
 	
 	return [lang,listener]
 
-def listener_creator(listeners):
-	lang,listener = listener_menu(listeners)
-	rs = lang_handler(lang)
-	print(rs) 
+def listener_creator(listeners, ngrok_use,option=False, lang="",listener="",ip_spec=""): 
+	if not lang and not listener:
+		lang,listener = listener_menu(listeners)
+	rs = lang_handler(lang, option)
+	data = conn_handler(ngrok_use, ip_spec)
 	
-def take_choices(listeners,choice=""):
-	history = []
+	local_port = ""
+
 	try:
-		while True:
+		ip,port,local_port = data
+	except:
+		ip,port = data
+
+	provide_rs(rs,ip,port)
+
+	if not local_port:
+		activate_listener(listeners, listener, port,ngrok_use)
+	else:
+		activate_listener(listeners, listener, local_port,ngrok_use)
+
+
+def take_choices(listeners,ngrok_use,choice=""):
+	history = []
+	while True:
+		try:
 			if not choice:
 				OPTIONS = ['help', 'clear', 'listen', 'exit']
 				readline.set_completer(SimpleCompleter(OPTIONS).complete)
@@ -101,10 +126,9 @@ def take_choices(listeners,choice=""):
 				
 			elif choice == "clear":
 				clear_console()
-			
 			elif "listen" in choice:
 				try:
-					listener_creator(listeners)
+					listener_creator(listeners,ngrok_use)
 				except (KeyboardInterrupt,EOFError) as e:
 					exit_script()
 			else:
@@ -112,19 +136,16 @@ def take_choices(listeners,choice=""):
 
 			choice = ""
 			history.append(choice)
-	
-	except KeyboardInterrupt:
-		exit_script()
-	except EOFError:
-		exit_script()
-	except Exception as e:
-		print(f"[red]Script has errored out with error: {e}[red]")
-		exit_script()
 
-def main():
-	#Checking for listeners
-	listeners = listeners_check()
-	
+		except KeyboardInterrupt:
+			print("Enter exit or hit Ctrl+d to exit.")
+		except EOFError:
+			exit_script()
+		except Exception as e:
+			print(f"[red]Script has errored out with error: {e}[red]")
+			exit_script()
+
+def main(argv: Optional[Sequence[str]] = None):
 	#ASCII Art
 	print("""
 		██████╗░░██████╗████████╗
@@ -133,16 +154,44 @@ def main():
 		██╔══██╗░╚═══██╗░░░██║░░░
 		██║░░██║██████╔╝░░░██║░░░
 		╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░
+	
+						By Mustansir Godhrawala
+						ver: 1.0
 	""")
 
-	#Seeing is sys args are there 
-	try:
-		if sys.argv[1]:
-			if "listen" in sys.argv[1]: 
-				listener_creator(listeners)
-	except:
-		#If sys args are absent it throws an error so....
-		take_choices(listeners)
+	#Checking for listeners
+	listeners = listeners_check()
+	ngrok_use = False
+
+	# Argument Parsing
+	parser = argparse.ArgumentParser()
+	parser.add_argument('-n', help="Run with a -n flag to use ngrok when making reverse shell.",action="store_true")
+	parser.add_argument('-m', help="Run with a -m flag to open with the listener menu.",action="store_true")
+	parser.add_argument('--lang', type=str, help="Use the --lang flag to specify the language for the listener.")
+	parser.add_argument('-l','--listener', type=str, help="Use the -l flag to specify the listener. Default=netcat",default="netcat")
+	parser.add_argument('-i','--ip', type=str, help="Set the -i flag to v for 'vpn' ip, 'l' for local ip and 'n' for ngrok.",default="")
+	parser.add_argument('-b','--basic', action='store_true', help="Set the -b flag to use the most basic reverse shell there is.")
+
+	#Processing args
+	args = parser.parse_args(argv)
+	#Shortening the ip choice
+	if len(args.ip) > 1:
+		args.ip = args.ip[0]
+	if args.n:
+		if ngrok_stat():
+			print("Ngrok will be used in reverse shell creation.")
+			ngrok_use = True
+		else:
+			print("Ngrok is not installed, exiting program.")
+			print("Please install ngrok at \"https://ngrok.com/download\"")
+			exit()
+	if args.m:
+		listener_creator(listeners, ngrok_use,args.ip)
+	if args.lang:
+		listener_creator(listeners, ngrok_use,args.basic, args.lang, args.listener,args.ip)
+
+
+	take_choices(listeners, ngrok_use)
 
 if __name__=="__main__":
 	main()

@@ -3,6 +3,7 @@ try:
 except ImportError:
     import readline
 import logging
+from rich import print
 
 LOG_FILENAME = '/tmp/rst.log'
 logging.basicConfig(
@@ -47,5 +48,6 @@ class SimpleCompleter:
 def input_loop():
     line = ''
     while line != 'stop':
-        line = input('>>>')
+        print('[yellow]rst>>>[/yellow]',end="")
+        line = input('')
         return line
