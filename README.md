@@ -1,6 +1,7 @@
 # RST | Reverse Shell Tool 
 
 ![GitHub](https://img.shields.io/github/license/mustansirgodhrawala/rst)
+![code size](https://img.shields.io/github/languages/code-size/mustansirgodhrawala/rst)
 
 ## Description 
 
