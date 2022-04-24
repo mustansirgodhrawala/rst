@@ -6,7 +6,12 @@
 Welcome to Reverse Shell Tool's documentation!
 ==============================================
 
-**Project is under active development.**
+This project is under active development.
+
+* :ref:`Languages`
+* :ref:`Listeners`
+* :ref:`Create reverse listeners`
+* :ref:`Ngrok Reverse Shells`
 
 .. toctree::
    :maxdepth: 2
