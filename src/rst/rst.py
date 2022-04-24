@@ -88,7 +88,7 @@ def listener_menu(listeners):
 def listener_creator(listeners, ngrok_use,option=False, lang="",listener="",ip_spec=""): 
 	if not lang and not listener:
 		lang,listener = listener_menu(listeners)
-	rs = lang_handler(lang, option)
+	rs = lang_handler(lang, optdion)
 	data = conn_handler(ngrok_use, ip_spec)
 	
 	local_port = ""
