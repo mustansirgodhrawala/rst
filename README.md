@@ -1,5 +1,7 @@
 # RST | Reverse Shell Tool 
 
+![GitHub](https://img.shields.io/github/license/mustansirgodhrawala/rst)
+
 ## Description 
 
 Reverse Shell Tool by Mustansir Godhrawala. I created this tool to make the reverse shell process easier, rather than having to open pentest monkey's reverse shell cheatsheet and editing out the IP and PORT, the script will choose a random port and grab your IP and put it into your clipboard. 
