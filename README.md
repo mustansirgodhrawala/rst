@@ -15,49 +15,33 @@ We'll create the payload and put it in your clipboard, and start the listener on
 
 ## Installation Guide
 
-In depth guide:
-1. View the setup script in the browser and click on it. 
-2. Click on the view raw file, and copy the link from the browser search bar. 
-3. Wget the setup script. Using the below command. 
+### PYPI Install 
+
+1. Run pip install,  this will install all dependencies and build the wheel for you. 
 ```bash
-wget https://raw.githubusercontent.com/mustansirgodhrawala/rst/master/setup
-```
-4.Run the following command
-```bash
-chmod +x setup
+pip3 install reverse-shell-tool
 ```
 
-5. Execute the command using the below command
-```bash 
-./setup
-```
+### Source install 
 
-OR
-
-1. Clone the repo.
+1. Clone the repo. 
 ```bash
 git clone https://github.com/mustansirgodhrawala/rst.git
 ```
-2. Change the directory.
+
+2. Change directory into repo
 ```bash
-cd rst 
-```
-3.  Give setup execution permissions.
-```bash
-chmod +x setup
-```
-4. Run the setup shell script. 
-```bash
-./setup
+cd rst
 ```
 
-All done, the 'rst' script is ready to use. 
-## Usage
-
+3. Run setup.py install
 ```bash
-1. rst python [Python payload with default netcat listener]
-2. rst ruby [Ruby Payload with default netcat listener]
-3. rst nc 2 [2 For pwncat listener]
-4. rst python pwncat [Python payload with pwncat listener]
-5. rst ruby nc [Ruby payload with netcat listener]
+python3 setup.py install 
 ```
+
+**(Running rst in a python virtual env is recommended)**
+
+### Documentation
+For in-depth documentation on how the tool works and advanced usage you can find information at [Documentation](https://reverse-shell-tool.readthedocs.io/en/latest/).
+
+**This project is under active development.**
