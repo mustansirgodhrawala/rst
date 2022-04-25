@@ -161,7 +161,7 @@ def take_choices(listeners, ngrok_use, choice=""):
             exit_script()
 
 
-def main(argv: Optional[Sequence[str]] = None):
+def main(argv: Optional[Sequence[str]]):
     # ASCII Art
     print(
         """
