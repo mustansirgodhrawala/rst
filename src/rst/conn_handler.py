@@ -1,11 +1,14 @@
-from simple_term_menu import TerminalMenu
-import netifaces
 import ipaddress
 import random
 import socket
+
+import netifaces
+from simple_term_menu import TerminalMenu
+
 from rst.ngrok_handler import (
     ngrok_tunnel_creator,
 )
+from rst.rst import exit_script
 
 
 def is_port_in_use(port: int) -> bool:
@@ -89,16 +92,21 @@ def conn_handler(ngrok_use, ip_spec=""):
             if local_ip:
                 return [local_ip, random_port()]
             else:
-                raise "Couldn't grab local ip, please specify manually."
+                local_ip = input("Couldn't grab local ip, please specify manually.")
+                return [local_ip, random_port()]
         elif ip_spec == "v":
             if vpn_ip:
                 return [vpn_ip, random_port()]
             else:
-                raise "Couldn't find vpn ip, please enter manually."
+                vpn_ip = input("Couldn't find vpn ip, please enter manually.")
+                return [vpn_ip, random_port()]
         elif ip_spec == "n":
             if ngrok_use:
                 port = random_port()
                 ngrok_ip, ngrok_port = ngrok_tunnel_creator(port)
                 return [ngrok_ip, ngrok_port, port]
             else:
-                raise "To use ngrok please run with -n flag or enter ngrok=True from console."
+                print(
+                    "To use ngrok please run with -n flag or enter ngrok=True from console."
+                )
+                exit_script()

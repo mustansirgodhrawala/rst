@@ -1,5 +1,6 @@
 import subprocess
-import rst
+
+from rst.rst import take_choices
 
 """
 {'netcat': ['nc', 'netcat'], 'socat': ['socat', 'scat'], 'pwncat': ['pwn', 'pwncat', 'pwncat-cs']}
@@ -47,4 +48,4 @@ def activate_listener(listeners, listener, port, ngrok_use):
                     break
 
     # Returning back to the main script.
-    rst.rst.take_choices(listeners, ngrok_use)
+    take_choices(listeners, ngrok_use)

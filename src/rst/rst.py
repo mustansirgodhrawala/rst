@@ -1,21 +1,26 @@
 #!/usr/bin/python3
-from rich import print
+import argparse
 import os
+from typing import Optional
+from typing import Sequence
+
+from rich import print
 from simple_term_menu import TerminalMenu
-from rst.autocomplete import SimpleCompleter, input_loop
-from rst.lang_handler import lang_handler, provide_rs
+
+from rst.autocomplete import input_loop
+from rst.autocomplete import SimpleCompleter
+from rst.conn_handler import conn_handler
+from rst.lang_handler import lang_handler
+from rst.lang_handler import provide_rs
+from rst.listener_handler import activate_listener
 from rst.ngrok_handler import (
     ngrok_stat,
 )
-import argparse
-from typing import Sequence, Optional
-from rst.conn_handler import conn_handler
-from rst.listener_handler import activate_listener
 
 try:
-    import gnureadline as readline
+    import gnureadline as readline  # type: ignore
 except ImportError:
-    import readline
+    import readline  # type: ignore
 
 
 languages = {
@@ -161,7 +166,7 @@ def take_choices(listeners, ngrok_use, choice=""):
             exit_script()
 
 
-def main(argv: Optional[Sequence[str]]):
+def main(argv: Optional[Sequence[str]] = None):
     # ASCII Art
     print(
         """
