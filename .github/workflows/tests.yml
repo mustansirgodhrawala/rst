@@ -23,8 +23,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox tox-gh-actions
         pip install .[testing]
+    - name: Install test dependencies
+      run: sudo apt-get install xclip xsel gtk qt
     - name: Run test suite
       uses: GabrielBB/xvfb-action@v1.2
       with:
         run: |
-          pytest tests --cov glooey
+          pytest tests --cov rst
