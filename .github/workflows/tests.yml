@@ -27,7 +27,7 @@ jobs:
       with:
         run: |
           pip3 install -e .[testing]
-          coverage run -a -m pytest
+          coverage run -a -m pytest --cov=src
           coverage xml
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
