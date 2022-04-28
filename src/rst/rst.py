@@ -245,7 +245,3 @@ def main(argv: Optional[Sequence[str]] = None):
         )
 
     take_choices(listeners, ngrok_use)
-
-
-if __name__ == "__main__":
-    main()

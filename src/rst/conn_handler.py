@@ -5,10 +5,10 @@ import socket
 import netifaces
 from simple_term_menu import TerminalMenu
 
+import rst
 from rst.ngrok_handler import (
     ngrok_tunnel_creator,
 )
-from rst.rst import exit_script
 
 
 def is_port_in_use(port: int) -> bool:
@@ -109,4 +109,4 @@ def conn_handler(ngrok_use, ip_spec=""):
                 print(
                     "To use ngrok please run with -n flag or enter ngrok=True from console."
                 )
-                exit_script()
+                rst.rst.exit_script()  # type: ignore[attr-defined]

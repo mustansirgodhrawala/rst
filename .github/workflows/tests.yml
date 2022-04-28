@@ -28,4 +28,8 @@ jobs:
       uses: GabrielBB/xvfb-action@v1.2
       with:
         run: |
-          pytest tests --cov rst
+          coverage erase
+          coverage run -a -m pytest
+          coverage xml
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
