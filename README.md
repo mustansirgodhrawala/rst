@@ -20,14 +20,46 @@ We'll create the payload and put it in your clipboard, and start the listener on
 
 **Dude** making reverse shells is easy as  f\*\*k I mean I could go wherever I want copy the reverse shell..... aaahahahaha
 
-Don't you see you have to go somewhere
+Don't you see you have to go somewhere and copy shit and check the ip and what if you aren't pentesting with a vpn aaaaaaaaah
 
 Let's take a look at a few scenarios and exactly how powerful reverse-shell-tool is....
 
 1. Install rst on my linux box?
 ```bash
-pip3 install reverse-shell-tool
+\# pip3 install reverse-shell-tool
 ```
+
+2. Verify installation.
+```bash
+\# rst -v
+```
+
+### Scenarios:
+
+1. Python reverse shell with pwncat listener using vpn ip?
+```
+rst -i v --lang py -l pwn
+```
+Breakdown: '-i' Specifies vpn ip
+		   '--lang' Specifies the language as py for valid shortforms see full documentation.
+		   '-l' Specifies the listener as pwncat
+
+2. Netcat reverse shell for an openbsd box with netcat listener using local ip?
+```
+rst -i l --lang nc
+```
+Breakdown: '-i' Specifies the local ip, valid shortforms as l,v,n for local, vpn and ngrok respectively.
+		   '--lang' Specifies the language as netcat, for valid shortforms see full documentation.
+		   '-l' Specifies the default as netcat so need to specify.
+
+3. Wanna do use case no 2 but have no vpn or local ip use? Use ngrok with the pyngrok library automate it with rst.
+```
+rst -i n --lang nc -n
+```
+Breakdown: '-i' Specifies the ngrok ip, valid shortforms as l,v,n for local, vpn and ngrok respectively.
+		   '--lang' Specifies the language as netcat, for valid shortforms see full documentation.
+		   '-l' Specifies the default as netcat so need to specify.
+		   '-n' Activates the ngrok library and does a one time installation of the binary.
 
 ### Source install
 
