@@ -27,7 +27,6 @@ jobs:
       uses: GabrielBB/xvfb-action@v1.2
       with:
         run: |
-          coverage run -m pytest --cov=src
-          coverage xml
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2
+          pytest --cov=src
+    # - name: Upload coverage to Codecov
+      # uses: codecov/codecov-action@v2
