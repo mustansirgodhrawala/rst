@@ -10,10 +10,14 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - name: Run tests and collect coverage
-        run: |
-          pip3 install -e .[testing]
-          coverage run -a -m pytest
-          coverage xml
+      - name: Install test dependencies
+        run: sudo apt-get install xclip xsel
+      - name: Run test suite
+        uses: GabrielBB/xvfb-action@v1.2
+        with:
+          run: |
+            pip3 install -e .[testing]
+            coverage run -a -m pytest
+            coverage xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
