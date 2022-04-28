@@ -26,12 +26,12 @@ Let's take a look at a few scenarios and exactly how powerful reverse-shell-tool
 
 1. Install rst on my linux box?
 ```bash
-\# pip3 install reverse-shell-tool
+pip3 install reverse-shell-tool
 ```
 
 2. Verify installation.
 ```bash
-\# rst -v
+rst -v
 ```
 
 ### Scenarios:
