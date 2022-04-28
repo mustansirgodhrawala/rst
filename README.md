@@ -40,26 +40,29 @@ rst -v
 ```
 rst -i v --lang py -l pwn
 ```
-Breakdown: '-i' Specifies vpn ip
-		   '--lang' Specifies the language as py for valid shortforms see full documentation.
-		   '-l' Specifies the listener as pwncat
+Breakdown:
+1. '-i' Specifies vpn ip
+2. '--lang' Specifies the language as py for valid shortforms see full documentation.
+3. '-l' Specifies the listener as pwncat
 
 2. Netcat reverse shell for an openbsd box with netcat listener using local ip?
 ```
 rst -i l --lang nc
 ```
-Breakdown: '-i' Specifies the local ip, valid shortforms as l,v,n for local, vpn and ngrok respectively.
-		   '--lang' Specifies the language as netcat, for valid shortforms see full documentation.
-		   '-l' Specifies the default as netcat so need to specify.
+Breakdown:
+1. '-i' Specifies the local ip, valid shortforms as l,v,n for local, vpn and ngrok respectively.
+2. '--lang' Specifies the language as netcat, for valid shortforms see full documentation.
+3. '-l' Specifies the default as netcat so need to specify.
 
 3. Wanna do use case no 2 but have no vpn or local ip use? Use ngrok with the pyngrok library automate it with rst.
 ```
 rst -i n --lang nc -n
 ```
-Breakdown: '-i' Specifies the ngrok ip, valid shortforms as l,v,n for local, vpn and ngrok respectively.
-		   '--lang' Specifies the language as netcat, for valid shortforms see full documentation.
-		   '-l' Specifies the default as netcat so need to specify.
-		   '-n' Activates the ngrok library and does a one time installation of the binary.
+Breakdown:
+1. '-i' Specifies the ngrok ip, valid shortforms as l,v,n for local, vpn and ngrok respectively.
+2. '--lang' Specifies the language as netcat, for valid shortforms see full documentation.
+3. '-l' Specifies the default as netcat so need to specify.
+4. '-n' Activates the ngrok library and does a one time installation of the binary.
 
 ### Source install
 
