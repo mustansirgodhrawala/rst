@@ -4,7 +4,7 @@
 ![code size](https://img.shields.io/github/languages/code-size/mustansirgodhrawala/rst)
 [![Documentation Status](https://readthedocs.org/projects/reverse-shell-tool/badge/?version=latest)](https://reverse-shell-tool.readthedocs.io/en/latest/?badge=latest)
 ![GitHub Build Status](https://img.shields.io/github/workflow/status/mustansirgodhrawala/rst/Tests)
-![Code Coverage](https://codecov.io/gh/mustansirgodhrawala/rst/branch/master/graph/badge.svg?token=28PKVCT5G0)
+![Code Coverage](https://codecov.io/gh/mustansirgodhrawala/rst/branch/add_coverage/graph/badge.svg?token=28PKVCT5G0)
 
 ## Description
 
