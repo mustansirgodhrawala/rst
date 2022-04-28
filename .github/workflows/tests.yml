@@ -28,4 +28,4 @@ jobs:
       uses: GabrielBB/xvfb-action@v1.2
       with:
         run: |
-          pytest tests --cov rst
+          pytest tests
