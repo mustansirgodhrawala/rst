@@ -31,3 +31,5 @@ jobs:
           pip3 install -e .[testing]
           coverage run -a -m pytest tests
           coverage xml
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
