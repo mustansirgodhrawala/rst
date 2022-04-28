@@ -55,7 +55,7 @@ Breakdown:
 - '--lang' Specifies the language as netcat, for valid shortforms see full documentation.
 - '-l' Specifies the default as netcat so need to specify.
 
-p
+
 3. Wanna do use case no 2 but have no vpn or local ip use? Use ngrok with the pyngrok library automate it with rst.
 ```
 rst -i n --lang nc -n
