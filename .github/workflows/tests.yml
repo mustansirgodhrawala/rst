@@ -28,4 +28,6 @@ jobs:
       uses: GabrielBB/xvfb-action@v1.2
       with:
         run: |
-          pytest tests
+          pip3 install -e .[testing]
+          coverage run -a -m pytest
+          coverage xml
