@@ -4,6 +4,7 @@ import os
 from typing import Optional
 from typing import Sequence
 
+import pkg_resources  # type: ignore
 from rich import print
 from simple_term_menu import TerminalMenu
 
@@ -167,21 +168,6 @@ def take_choices(listeners, ngrok_use, choice=""):
 
 
 def main(argv: Optional[Sequence[str]] = None):
-    # ASCII Art
-    print(
-        """
-        ██████╗░░██████╗████████╗
-        ██╔══██╗██╔════╝╚══██╔══╝
-        ██████╔╝╚█████╗░░░░██║░░░
-        ██╔══██╗░╚═══██╗░░░██║░░░
-        ██║░░██║██████╔╝░░░██║░░░
-        ╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░
-
-                        By Mustansir Godhrawala
-                        ver: 1.0
-    """
-    )
-
     # Checking for listeners
     listeners = listeners_check()
     ngrok_use = False
@@ -223,9 +209,42 @@ def main(argv: Optional[Sequence[str]] = None):
         action="store_true",
         help="Set the -b flag to use the most basic reverse shell there is.",
     )
+    parser.add_argument(
+        "-v",
+        "--version",
+        action="store_true",
+        help="Set the -v flag to print the version.",
+    )
+    parser.add_argument(
+        "-q",
+        "--quiet",
+        action="store_true",
+        help="Set the -q flag to not print banner",
+    )
 
     # Processing args
     args = parser.parse_args(argv)
+    if args.version:
+        version = pkg_resources.require("reverse-shell-tool")[0].version
+        print(f"[white]rst ver {version}[/white]")
+        exit_script()
+
+    if not args.quiet:
+        # ASCII Art
+        print(
+            """
+            ██████╗░░██████╗████████╗
+            ██╔══██╗██╔════╝╚══██╔══╝
+            ██████╔╝╚█████╗░░░░██║░░░
+            ██╔══██╗░╚═══██╗░░░██║░░░
+            ██║░░██║██████╔╝░░░██║░░░
+            ╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░
+
+                            By Mustansir Godhrawala
+                            ver: 1.0
+        """
+        )
+
     # Shortening the ip choice
     if len(args.ip) > 1:
         args.ip = args.ip[0]

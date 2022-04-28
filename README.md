@@ -16,11 +16,15 @@ We'll create the payload and put it in your clipboard, and start the listener on
 
 ### **Run as sudo only.**
 
-## Installation Guide
+## Why use RST?
 
-### PYPI Install
+**Dude** making reverse shells is easy as  f\*\*k I mean I could go wherever I want copy the reverse shell..... aaahahahaha
 
-1. Run pip install,  this will install all dependencies and build the wheel for you.
+Don't you see you have to go somewhere
+
+Let's take a look at a few scenarios and exactly how powerful reverse-shell-tool is....
+
+1. Install rst on my linux box?
 ```bash
 pip3 install reverse-shell-tool
 ```
@@ -46,5 +50,3 @@ python3 setup.py install
 
 ### Documentation
 For in-depth documentation on how the tool works and advanced usage you can find information at [Documentation](https://reverse-shell-tool.readthedocs.io/en/latest/).
-
-**This project is under active development.**

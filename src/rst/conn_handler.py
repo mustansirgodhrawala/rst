@@ -3,6 +3,7 @@ import random
 import socket
 
 import netifaces
+from rich import print
 from simple_term_menu import TerminalMenu
 
 import rst
@@ -62,14 +63,14 @@ def random_port():
 def conn_handler(ngrok_use, ip_spec=""):
     # IP Address Part
     options = []
-    if vpn_ip_check():
-        vpn_ip = vpn_ip_check()
-        options.append("VPN IP")
-    if local_ip_check():
-        local_ip = local_ip_check()
-        options.append("Local IP(Behind NAT)")
-    if ngrok_use:
-        options.append("Ngrok Public")
+    # if vpn_ip_check():
+    vpn_ip = vpn_ip_check()
+    options.append("VPN IP")
+    # if local_ip_check():
+    local_ip = local_ip_check()
+    options.append("Local IP(Behind NAT)")
+    # if ngrok_use:
+    options.append("Ngrok Public")
 
     if not ip_spec:
 
@@ -98,7 +99,8 @@ def conn_handler(ngrok_use, ip_spec=""):
             if vpn_ip:
                 return [vpn_ip, random_port()]
             else:
-                vpn_ip = input("Couldn't find vpn ip, please enter manually.")
+                print("[red]Couldn't find vpn ip using system information.[/red]")
+                vpn_ip = input("Please enter IP manually:")
                 return [vpn_ip, random_port()]
         elif ip_spec == "n":
             if ngrok_use:
