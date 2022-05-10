@@ -168,6 +168,8 @@ def take_choices(listeners, ngrok_use, choice=""):
 
 
 def main(argv: Optional[Sequence[str]] = None):
+    version = pkg_resources.require("reverse-shell-tool")[0].version
+
     # Checking for listeners
     listeners = listeners_check()
     ngrok_use = False
@@ -225,14 +227,13 @@ def main(argv: Optional[Sequence[str]] = None):
     # Processing args
     args = parser.parse_args(argv)
     if args.version:
-        version = pkg_resources.require("reverse-shell-tool")[0].version
         print(f"[white]rst ver {version}[/white]")
         exit_script()
 
     if not args.quiet:
         # ASCII Art
         print(
-            """
+            f"""
             ██████╗░░██████╗████████╗
             ██╔══██╗██╔════╝╚══██╔══╝
             ██████╔╝╚█████╗░░░░██║░░░
@@ -241,7 +242,7 @@ def main(argv: Optional[Sequence[str]] = None):
             ╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░
 
                             By Mustansir Godhrawala
-                            ver: 1.0
+                            ver: {version}
         """
         )
 
